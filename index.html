@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Advantage - Bulk Reseller Program</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f8fafc;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, rgb(14,104,139) 0%, #1e40af 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 3rem 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            border-left: 5px solid rgb(14,104,139);
+        }
+        
+        .intro h2 {
+            color: rgb(14,104,139);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .pricing-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: rgb(14,104,139);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgb(14,104,139);
+            text-align: center;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid #f1f5f9;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, rgb(14,104,139), #1e40af);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .package-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgb(14,104,139);
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .pricing-table th {
+            background: #f8fafc;
+            padding: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-table td {
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-table .volume {
+            font-weight: 600;
+            background: #f8fafc;
+        }
+        
+        .pricing-table .price {
+            font-weight: 600;
+            color: rgb(14,104,139);
+        }
+        
+        .ala-carte-section {
+            margin: 3rem 0;
+        }
+        
+        .wire-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .wire-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid rgb(14,104,139);
+        }
+        
+        .wire-name {
+            font-weight: 600;
+            color: rgb(14,104,139);
+            margin-bottom: 0.5rem;
+        }
+        
+        .wire-pricing {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .terms-section {
+            background: #fff8e1;
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid #ff9800;
+            margin: 3rem 0;
+        }
+        
+        .terms-title {
+            color: #ff9800;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .terms-list {
+            list-style: none;
+            space-y: 0.5rem;
+        }
+        
+        .terms-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .terms-list li::before {
+            content: '•';
+            color: #ff9800;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .packages-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .package-overview-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid rgb(14,104,139);
+        }
+        
+        .package-overview-title {
+            font-weight: 700;
+            color: rgb(14,104,139);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .package-overview-stats {
+            margin-bottom: 1rem;
+        }
+        
+        .stat {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+        
+        .package-overview-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgb(14,104,139) 0%, #1e40af 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; }
+            .header::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">PRESS | ADVANTAGE</div>
+                <div class="tagline">Bulk Reseller Program</div>
+                <div class="subtitle">Professional Press Release Distribution at Scale</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>Partner with Press Advantage</h2>
+                <p>Expand your service offerings with our comprehensive press release distribution network. Access premium media outlets, competitive wholesale pricing, and dedicated support to grow your business.</p>
+            </div>
+            
+            <!-- Package Overview -->
+            <div class="section-title">Distribution Packages</div>
+            
+            <!-- Foundation Package -->
+            <div class="package-overview-card" style="width: 100%; margin-bottom: 2rem;">
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 2;">
+                        <div class="package-overview-title">Foundation Package</div>
+                        <div class="package-overview-stats">
+                            <div class="stat">447 Total Sites</div>
+                            <div class="stat">Broad Market Coverage</div>
+                        </div>
+                        <div class="package-overview-description">
+                            Access to reliable news outlets with solid domain authority, providing broad reach across diverse media types including broadcast, financial, and regional publications.
+                            <br><br><strong>Included Wire Services:</strong> Sector News (115 sites), General News (132 sites), Market News (69 sites), Broadband Authority (9 sites), Local Media (122 sites)
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+                            <thead>
+                                <tr>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">DA Range</th>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">Sites</th>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: white;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">0-39</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">293</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">65.5%</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">40-59</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">110</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">24.6%</td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">60-69</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">31</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">6.9%</td>
+                                </tr>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center;">70+</td>
+                                    <td style="padding: 0.6rem; text-align: center;">13</td>
+                                    <td style="padding: 0.6rem; text-align: center;">2.9%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Authority Package -->
+            <div class="package-overview-card" style="width: 100%; margin-bottom: 2rem;">
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 2;">
+                        <div class="package-overview-title">Authority Package</div>
+                        <div class="package-overview-stats">
+                            <div class="stat">681 Total Sites (Everything in Foundation + 234 Premium Sites)</div>
+                            <div class="stat">High-Authority Focus</div>
+                        </div>
+                        <div class="package-overview-description">
+                            <strong>Includes everything in Foundation Package</strong> plus premium placement on high-authority newspapers and established financial publications, delivering credible backlinks from trusted news sources.
+                            <br><br><strong>Additional Wire Services:</strong> Metro Authority (26 sites - DA 80+), Metro News (207 sites), Market Intelligence/Barchart (1 premium site)
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+                            <thead>
+                                <tr>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">DA Range</th>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">Sites</th>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: white;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">0-49</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">7</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">3.0%</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">50-59</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">49</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">21.0%</td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">60-69</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">85</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">36.1%</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">70-79</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">67</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">28.8%</td>
+                                </tr>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">80-89</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">24</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">10.3%</td>
+                                </tr>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center;">90+</td>
+                                    <td style="padding: 0.6rem; text-align: center;">2</td>
+                                    <td style="padding: 0.6rem; text-align: center;">0.9%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prestige Package -->
+            <div class="package-overview-card" style="width: 100%; margin-bottom: 2rem;">
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 2;">
+                        <div class="package-overview-title">Prestige Package</div>
+                        <div class="package-overview-stats">
+                            <div class="stat">686 Total Sites (Everything in Authority + 5 Elite Publications)</div>
+                            <div class="stat">Maximum Authority</div>
+                        </div>
+                        <div class="package-overview-description">
+                            <strong>Includes everything in Authority Package</strong> plus exclusive access to top-tier national publications including USA Today, Yahoo Finance, and Benzinga, ensuring maximum authority and brand recognition.
+                            <br><br><strong>Additional Wire Services:</strong> USA Today (1 site - DA 94), Flagship Press (4 sites - Yahoo Finance, Yahoo.com, Benzinga, Globe Newswire)
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+                            <thead>
+                                <tr>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">Publication</th>
+                                    <th style="background: rgb(14,104,139); color: white; padding: 0.75rem; text-align: center; font-weight: 600;">DA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">USA Today</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">94</td>
+                                </tr>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">Yahoo! Finance</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">93</td>
+                                </tr>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">Globe Newswire</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">90</td>
+                                </tr>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">Yahoo.com</td>
+                                    <td style="padding: 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0;">89</td>
+                                </tr>
+                                <tr style="background: #dcfce7; font-weight: 600; color: #166534;">
+                                    <td style="padding: 0.6rem; text-align: center;">Benzinga</td>
+                                    <td style="padding: 0.6rem; text-align: center;">88</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing Tables -->
+            <div class="pricing-section">
+                <div class="section-title">Standard Distribution Package Pricing</div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="card-header">
+                            <div class="package-name">Foundation</div>
+                            <div class="package-description">Volume coverage with broad market reach</div>
+                        </div>
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Volume/Month</th>
+                                    <th>Price per Release</th>
+                                    <th>Monthly Minimum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="volume">50</td>
+                                    <td class="price">$55</td>
+                                    <td>$2,750</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">100</td>
+                                    <td class="price">$50</td>
+                                    <td>$5,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">250</td>
+                                    <td class="price">$45</td>
+                                    <td>$11,250</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">500</td>
+                                    <td class="price">$43</td>
+                                    <td>$21,500</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">1000</td>
+                                    <td class="price">$41</td>
+                                    <td>$41,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="card-header">
+                            <div class="package-name">Authority</div>
+                            <div class="package-description">Premium high-authority placement</div>
+                        </div>
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Volume/Month</th>
+                                    <th>Price per Release</th>
+                                    <th>Monthly Minimum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="volume">50</td>
+                                    <td class="price">$95</td>
+                                    <td>$4,750</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">100</td>
+                                    <td class="price">$93</td>
+                                    <td>$9,300</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">250</td>
+                                    <td class="price">$90</td>
+                                    <td>$22,500</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">500</td>
+                                    <td class="price">$87</td>
+                                    <td>$43,500</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">1000</td>
+                                    <td class="price">$85</td>
+                                    <td>$85,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="card-header">
+                            <div class="package-name">Prestige</div>
+                            <div class="package-description">Elite national publication placement</div>
+                        </div>
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Volume/Month</th>
+                                    <th>Price per Release</th>
+                                    <th>Monthly Minimum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="volume">50</td>
+                                    <td class="price">$250</td>
+                                    <td>$12,500</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">100</td>
+                                    <td class="price">$239</td>
+                                    <td>$23,900</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">250</td>
+                                    <td class="price">$232</td>
+                                    <td>$58,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">500</td>
+                                    <td class="price">$224</td>
+                                    <td>$112,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="volume">1000</td>
+                                    <td class="price">$216</td>
+                                    <td>$216,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- A-la-Carte Section -->
+            <div class="ala-carte-section">
+                <div class="section-title">À-la-Carte Wire Services</div>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666; font-style: italic;">
+                    Individual wire services available for targeted distribution. Perfect for specialized campaigns or specific publication requirements.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+                    <!-- Barchart -->
+                    <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid rgb(14,104,139);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div style="font-size: 1.25rem; font-weight: 700; color: rgb(14,104,139);">Barchart</div>
+                            <div style="background: rgb(14,104,139); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">$21 - $30</div>
+                        </div>
+                        <div style="color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5;">
+                            Premium financial publication focused on market analysis and business intelligence
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #f8fafc;">
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Volume</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Price</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Monthly Min</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">50</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$30</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$1,500</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">100</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$27</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$2,700</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">250</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$25</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$6,250</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">500</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$23</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$11,500</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">1000</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$21</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$21,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Metro Authority -->
+                    <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid rgb(14,104,139);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div style="font-size: 1.25rem; font-weight: 700; color: rgb(14,104,139);">Metro Authority</div>
+                            <div style="background: rgb(14,104,139); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">$29 - $40</div>
+                        </div>
+                        <div style="color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5;">
+                            26 major metropolitan newspapers with DA 80+, providing top-tier news credibility
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #f8fafc;">
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Volume</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Price</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Monthly Min</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">50</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$40</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$2,000</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">100</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$38</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$3,800</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">250</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$36</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$9,000</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">500</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$32</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$16,000</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">1000</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$29</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$29,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Metro News -->
+                    <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid rgb(14,104,139);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div style="font-size: 1.25rem; font-weight: 700; color: rgb(14,104,139);">Metro News</div>
+                            <div style="background: rgb(14,104,139); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">$25 - $35</div>
+                        </div>
+                        <div style="color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5;">
+                            207 quality regional newspapers delivering extensive geographic coverage
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #f8fafc;">
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Volume</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Price</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Monthly Min</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">50</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$35</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$1,750</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">100</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$32</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$3,200</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">250</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$30</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$7,500</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">500</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$28</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$14,000</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">1000</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$25</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$25,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Yahoo + Benzinga -->
+                    <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid rgb(14,104,139);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div style="font-size: 1.25rem; font-weight: 700; color: rgb(14,104,139);">Yahoo + Benzinga</div>
+                            <div style="background: rgb(14,104,139); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">$86 - $100</div>
+                        </div>
+                        <div style="color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5;">
+                            Elite financial news platforms including Yahoo Finance, Yahoo.com, Benzinga
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #f8fafc;">
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Volume</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Price</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Monthly Min</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">50</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$100</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$5,000</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">100</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$95</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$9,500</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">250</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$93</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$23,250</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">500</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$90</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$45,000</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">1000</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$86</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$86,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- USA Today -->
+                    <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid rgb(14,104,139);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div style="font-size: 1.25rem; font-weight: 700; color: rgb(14,104,139);">USA Today</div>
+                            <div style="background: rgb(14,104,139); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">$50 - $60</div>
+                        </div>
+                        <div style="color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.5;">
+                            Direct placement on America's most widely-read national newspaper (DA 94)
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #f8fafc;">
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Volume</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Price</th>
+                                    <th style="padding: 0.75rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600;">Monthly Min</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">50</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$60</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$3,000</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">100</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$56</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$5,600</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">250</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$54</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$13,500</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">500</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$52</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$26,000</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">1000</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0; font-weight: 600; color: rgb(14,104,139);">$50</td>
+                                    <td style="padding: 0.5rem; text-align: center; border: 1px solid #e2e8f0;">$50,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 10px; margin-top: 2rem; border-left: 4px solid rgb(14,104,139);">
+                    <p style="color: #555; font-size: 0.95rem; margin: 0;">
+                        <strong>Note:</strong> À-la-carte wire services include monthly minimums as shown above. 
+                        <strong>Editorial services are included</strong> when you have any Standard Distribution Package subscription.
+                        Without a Standard Package, a $10/release editorial fee applies to à-la-carte orders.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Terms -->
+            <div class="terms-section">
+                <div class="terms-title">Program Terms & Conditions</div>
+                <ul class="terms-list">
+                    <li><strong>12-month term contract</strong> with $1,000 setup fee</li>
+                    <li><strong>Editorial services included</strong> with all Standard Distribution Package subscriptions</li>
+                    <li><strong>$10/release editorial fee</strong> applies ONLY to à-la-carte wire services when no Standard Distribution Package is active</li>
+                    <li><strong>Release credits do not roll over</strong> to the next month</li>
+                    <li><strong>All posts are perpetual</strong> unless otherwise indicated</li>
+                    <li><strong>Credit card payments</strong> incur 5% processing fee and are unavailable for amounts over $10,000/month</li>
+                </ul>
+            </div>
+            
+            <!-- CTA -->
+            <div class="cta-section">
+                <div class="cta-title">Ready to Partner with Us?</div>
+                <div class="cta-text">Join our network of successful reseller partners and start offering premium press release distribution to your clients today.</div>
+                <div class="contact-info">
+                    support@pressadvantage.com • pressadvantage.com
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
